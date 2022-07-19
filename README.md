@@ -7,16 +7,4 @@
 - Open app
 - Check logs and find error `E/FirebaseMessaging: Topic sync or token retrieval failed on hard failure exceptions: java.util.concurrent.ExecutionException: java.io.IOException: SERVICE_NOT_AVAILABLE. Won't retry the operation.`
 ### Summary
-- Retrieving token for Android 12 and above does not work.
-- Code snippet: 
-```
-FirebaseMessaging.getInstance().token.addOnCompleteListener {
-    if(it.isSuccessful) {
-        println("->> token: ${it.result}")
-        Toast.makeText(this, "Token: ${it.result}", Toast.LENGTH_LONG).show()
-    } else {
-        println("->> error: ${it.exception}")
-        Toast.makeText(this, "Error: ${it.exception}", Toast.LENGTH_LONG).show()
-    }
-}
-```
+- Enabling `DebugAppCheckProviderFactory` in Android 6 to 9. Works properly for Android 10 to 12.
